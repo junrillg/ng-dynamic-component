@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import {JsonService} from './json.service';
 import {ActivatedRoute} from '@angular/router';
+import { DataBroadcastService } from './data-broadcast.service';
 
 @Component({
   selector: 'app-root',
@@ -12,23 +13,35 @@ export class AppComponent implements OnInit {
   activateScreen = false;
   paramsValue;
 
-  constructor(private jsonService: JsonService, private route: ActivatedRoute) {}
+  constructor(
+    private jsonService: JsonService,
+    private route: ActivatedRoute,
+    private dataBroadcastService: DataBroadcastService
+  ) {}
 
   ngOnInit() {
+    // fetch main data config
     this.jsonService.fetchConfig('mainview').subscribe(data => {
       this.mainView = data;
     });
 
-    this.route.params.subscribe( params => {
-      this.paramsValue = params['data'];
-      console.log(this.paramsValue);
+    // subscribe to any changes in params
+    this.dataBroadcastService.data.subscribe( data => {
+      this.paramsValue = data;
     });
   }
 
-  onActivate(e) {
+  /**
+   * Method when router is active
+   */
+  onActivate() {
     this.activateScreen = true;
   }
-  onDeactivate(e) {
+
+  /**
+   * Method when router is deactivate
+   */
+  onDeactivate() {
     this.activateScreen = false;
   }
 }

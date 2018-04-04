@@ -1,8 +1,8 @@
-<ng-template #table>
-  <app-table></app-table>
+<ng-template #table let-config="config" let-datum="datum">
+  <app-table [config]="config" [datum]="datum"></app-table>
 </ng-template>
-<ng-template #card>
-  <app-card></app-card>
+<ng-template #card let-config="config" let-datum="datum">
+  <app-cards [config]="config" [datum]="datum"></app-cards>
 </ng-template>
 
 <ng-template appLoadComponent></ng-template>

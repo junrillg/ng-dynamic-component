@@ -23,7 +23,9 @@ app.get('/json/data/:filename', function(req, res) {
 })
 
 app.use( express.static(__dirname + '/dist' ) )
-
+app.get('*', function(req, res){
+  res.redirect('/')
+})
 
 var server = app.listen(3000, function(){
   console.log('Server running at http://localhost:' + server.address().port)

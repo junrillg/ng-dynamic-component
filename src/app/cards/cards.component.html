@@ -1,0 +1,5 @@
+<div class="ui grid">
+  <div class="four wide column" *ngFor="let data of datum">
+    <app-card [columnFields]="config?.columndFields" [data]="data"></app-card>
+  </div>
+</div>

@@ -1,5 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {JsonService} from '../json.service';
+import {
+  Component,
+  Input,
+  OnInit
+} from '@angular/core';
+import { JsonService } from '../json.service';
 
 @Component({
   selector: 'app-render',
@@ -10,14 +14,14 @@ export class RenderComponent implements OnInit {
   @Input() template;
   @Input() configData: object;
   @Input() fileName: string;
+  componentData;
 
   constructor(private jsonService: JsonService) { }
 
   ngOnInit() {
     this.jsonService.fetchData(this.fileName).subscribe(data => {
-      console.log(data);
+      this.componentData = data;
     });
-
   }
 
 }

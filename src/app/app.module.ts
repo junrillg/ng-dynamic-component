@@ -6,10 +6,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { InitializerComponent } from './initializer/initializer.component';
 import { RouterModule, Routes } from '@angular/router';
 import { JsonService } from './json.service';
+import { DataBroadcastService } from './data-broadcast.service';
 import { RenderComponent } from './render/render.component';
 import { TableComponent } from './table/table.component';
 import { LoadComponentDirective } from './load-component.directive';
 import { CardComponent } from './card/card.component';
+import { CardsComponent } from './cards/cards.component';
+import { FilterTypePipe } from './filter-type.pipe';
 
 const appRoutes: Routes = [
   { path: ':data', component: InitializerComponent }
@@ -24,6 +27,8 @@ const appRoutes: Routes = [
     TableComponent,
     LoadComponentDirective,
     CardComponent,
+    CardsComponent,
+    FilterTypePipe,
   ],
   imports: [
     BrowserModule,
@@ -32,7 +37,7 @@ const appRoutes: Routes = [
       appRoutes
     )
   ],
-  providers: [JsonService],
+  providers: [JsonService, DataBroadcastService],
   bootstrap: [AppComponent],
   entryComponents: [
     RenderComponent,

@@ -1,20 +1,13 @@
 <div class="ui card">
-  <div class="image">
-    <img src="http://via.placeholder.com/350x150">
+  <div class="image" *ngFor="let field of columnFields | filterType: 'image'">
+    <img [hidden]="!field.isVisble" [src]="'https://dummyimage.com/600x400/db0d66/fff&text='+ (data[field?.columnName] || 'img')">
   </div>
   <div class="content">
-    <a class="header">Kristy</a>
-    <div class="meta">
-      <span class="date">Joined in 2013</span>
-    </div>
     <div class="description">
-      Kristy is an art director living in New York.
+      <p [hidden]="!field.isVisble" *ngFor="let field of columnFields | filterType: 'string'">
+        <strong>{{field?.columnDisplayName}}:</strong> {{data[field?.columnName]}}
+      </p>
     </div>
   </div>
-  <div class="extra content">
-    <a>
-      <i class="user icon"></i>
-      22 Friends
-    </a>
-  </div>
+  <div class="extra content"></div>
 </div>
