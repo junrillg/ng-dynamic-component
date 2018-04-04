@@ -1,0 +1,11 @@
+<div class="ui secondary  menu">
+  {{paramsValue}}
+  <a class="item" *ngFor="let menu of mainView?.menu" [class.active]="paramsValue === menu?.name" [routerLink]="menu?.name">
+    {{menu.displayName}}
+  </a>
+</div>
+<div [hidden]="!activateScreen">
+  <router-outlet (activate)="onActivate($event)" (deactivate)="onDeactivate($event)"></router-outlet>
+</div>
+<div [hidden]="activateScreen" [innerHTML]="mainView?.content">
+</div>
