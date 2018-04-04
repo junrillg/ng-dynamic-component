@@ -1,7 +1,5 @@
 import { Component, OnInit} from '@angular/core';
 import {JsonService} from './json.service';
-import {ActivatedRoute} from '@angular/router';
-import { DataBroadcastService } from './data-broadcast.service';
 
 @Component({
   selector: 'app-root',
@@ -14,20 +12,13 @@ export class AppComponent implements OnInit {
   paramsValue;
 
   constructor(
-    private jsonService: JsonService,
-    private route: ActivatedRoute,
-    private dataBroadcastService: DataBroadcastService
+    private jsonService: JsonService
   ) {}
 
   ngOnInit() {
     // fetch main data config
     this.jsonService.fetchConfig('mainview').subscribe(data => {
       this.mainView = data;
-    });
-
-    // subscribe to any changes in params
-    this.dataBroadcastService.data.subscribe( data => {
-      this.paramsValue = data;
     });
   }
 

@@ -11,7 +11,4 @@ import {
 export class CardComponent {
   @Input() columnFields;
   @Input() data;
-
-  constructor() {}
-
 }

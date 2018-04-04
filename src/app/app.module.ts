@@ -6,7 +6,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { InitializerComponent } from './initializer/initializer.component';
 import { RouterModule, Routes } from '@angular/router';
 import { JsonService } from './json.service';
-import { DataBroadcastService } from './data-broadcast.service';
 import { RenderComponent } from './render/render.component';
 import { TableComponent } from './table/table.component';
 import { LoadComponentDirective } from './load-component.directive';
@@ -37,7 +36,7 @@ const appRoutes: Routes = [
       appRoutes
     )
   ],
-  providers: [JsonService, DataBroadcastService],
+  providers: [JsonService],
   bootstrap: [AppComponent],
   entryComponents: [
     RenderComponent,

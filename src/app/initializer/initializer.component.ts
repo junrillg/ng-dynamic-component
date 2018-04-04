@@ -8,7 +8,6 @@ import { ActivatedRoute } from '@angular/router';
 import { JsonService } from '../json.service';
 import { LoadComponentDirective } from '../load-component.directive';
 import { RenderComponent } from '../render/render.component';
-import { DataBroadcastService } from '../data-broadcast.service';
 
 @Component({
   selector: 'app-initializer',
@@ -24,17 +23,12 @@ export class InitializerComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private jsonService: JsonService,
-    private componentFactoryResolver: ComponentFactoryResolver,
-    private dataBroadcastService: DataBroadcastService
+    private componentFactoryResolver: ComponentFactoryResolver
   ) {}
 
   ngOnInit() {
     this.route.params.subscribe( params => {
       const jsonFileName = params['data'];
-
-      // broadcase change in params
-      this.dataBroadcastService.broadcastDataChange(jsonFileName);
-
       if (jsonFileName) {
         this.jsonService.fetchConfig(jsonFileName).subscribe(data => {
           this.renderComponent(data, jsonFileName);

@@ -1,7 +1,6 @@
 import {
   Component,
-  Input,
-  OnInit
+  Input
 } from '@angular/core';
 
 @Component({
@@ -9,13 +8,7 @@ import {
   templateUrl: './cards.component.html',
   styleUrls: ['./cards.component.css']
 })
-export class CardsComponent implements OnInit {
+export class CardsComponent {
   @Input() config;
   @Input() datum;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
 }
